@@ -1,12 +1,30 @@
 {
   "name": "base-react-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install",
+    "lint": "eslint --ext .js,.ts,.tsx ./",
+    "lint:css": "stylelint --ext .css,.tsx ./"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@mario34/eslint-config-base": "^1.0.0",
+    "@mario34/eslint-config-react": "^1.0.0",
+    "@mario34/eslint-config-ts": "^1.0.0",
+    "eslint": "^8.50.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "postcss-styled-syntax": "^0.5.0",
+    "prettier": "3.0.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "stylelint --fix"
+    ]
+  }
 }
