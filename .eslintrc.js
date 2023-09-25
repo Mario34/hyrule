@@ -10,12 +10,38 @@ module.exports = {
     },
     {
       files: ['*.ts', '*.tsx'],
-      extends: ['@mario34/eslint-config-ts'],
-      plugins: ['prettier'],
-      env: {},
+      extends: [
+        '@mario34/eslint-config-ts',
+        'plugin:import/recommended',
+        'plugin:import/typescript',
+      ],
+      plugins: ['prettier', 'import'],
       rules: {
         'prettier/prettier': 'error',
         '@typescript-eslint/quotes': 'off',
+        'import/no-unresolved': [
+          'error',
+          {
+            ignore: ['@/*'],
+          },
+        ],
+        'import/order': [
+          'error',
+          {
+            groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+            pathGroups: [
+              {
+                pattern: '@/**',
+                group: 'external',
+                position: 'after',
+              },
+            ],
+            pathGroupsExcludedImportTypes: ['builtin'],
+            alphabetize: {
+              order: 'asc',
+            },
+          },
+        ],
       },
     },
   ],
